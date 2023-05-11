@@ -43,8 +43,10 @@ def index(request):
         user_list = User.objects.get(username=user.user)
         user_following_all.append(user_list)
 
+    # listas por comprension
     new_suggestions_list = [x for x in list(all_users) if (x not in list(user_following_all))]
     current_user = User.objects.filter(username=request.user.username)
+    # listas por comprension
     final_suggestions_list = [x for x in list(new_suggestions_list) if (x not in list(current_user))]
     #crea una lista random todas las veces
     random.shuffle(final_suggestions_list)
